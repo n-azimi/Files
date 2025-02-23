@@ -1,0 +1,620 @@
+{
+        "name": "GLD",
+        "loglevel": 1,
+        "coreType": "zmq",
+        "period": 10,
+        "slow_responding": "True",
+        "broker": "127.0.0.1:6000",
+        "brokerPort": 6000,
+        "broker_rank": 0,
+        "endpoints": [
+                {
+                        "name": "SS_0_Node633$phases",
+                        "type": "string",
+                        "global": false,
+                        "info": "{\"Node633\":\"phases\"}"
+                },
+                {
+                        "name": "SS_0_Node633$voltage_A",
+                        "type": "string",
+                        "global": false,
+                        "info": "{\"Node633\":\"voltage_A\"}"
+                },
+                {
+                        "name": "SS_0_Node633$voltage_B",
+                        "type": "string",
+                        "global": false,
+                        "info": "{\"Node633\":\"voltage_B\"}"
+                },
+                {
+                        "name": "SS_0_Node633$voltage_C",
+                        "type": "string",
+                        "global": false,
+                        "info": "{\"Node633\":\"voltage_C\"}"
+                },
+                {
+                        "name": "SS_0_Node633$nominal_voltage",
+                        "type": "string",
+                        "global": false,
+                        "info": "{\"Node633\":\"nominal_voltage\"}"
+                },
+                {
+                        "name": "SS_0_Node630$phases",
+                        "type": "string",
+                        "global": false,
+                        "info": "{\"Node630\":\"phases\"}"
+                },
+                {
+                        "name": "SS_0_Node630$voltage_A",
+                        "type": "string",
+                        "global": false,
+                        "info": "{\"Node630\":\"voltage_A\"}"
+                },
+                {
+                        "name": "SS_0_Node630$voltage_B",
+                        "type": "string",
+                        "global": false,
+                        "info": "{\"Node630\":\"voltage_B\"}"
+                },
+                {
+                        "name": "SS_0_Node630$voltage_C",
+                        "type": "string",
+                        "global": false,
+                        "info": "{\"Node630\":\"voltage_C\"}"
+                },
+                {
+                        "name": "SS_0_Node630$nominal_voltage",
+                        "type": "string",
+                        "global": false,
+                        "info": "{\"Node630\":\"nominal_voltage\"}"
+                },
+                {
+                        "name": "SS_0_Node632$phases",
+                        "type": "string",
+                        "global": false,
+                        "info": "{\"Node632\":\"phases\"}"
+                },
+                {
+                        "name": "SS_0_Node632$voltage_A",
+                        "type": "string",
+                        "global": false,
+                        "info": "{\"Node632\":\"voltage_A\"}"
+                },
+                {
+                        "name": "SS_0_Node632$voltage_B",
+                        "type": "string",
+                        "global": false,
+                        "info": "{\"Node632\":\"voltage_B\"}"
+                },
+                {
+                        "name": "SS_0_Node632$voltage_C",
+                        "type": "string",
+                        "global": false,
+                        "info": "{\"Node632\":\"voltage_C\"}"
+                },
+                {
+                        "name": "SS_0_Node632$nominal_voltage",
+                        "type": "string",
+                        "global": false,
+                        "info": "{\"Node632\":\"nominal_voltage\"}"
+                },
+                {
+                        "name": "SS_0_Node650$phases",
+                        "type": "string",
+                        "global": false,
+                        "info": "{\"Node650\":\"phases\"}"
+                },
+                {
+                        "name": "SS_0_Node650$bustype",
+                        "type": "string",
+                        "global": false,
+                        "info": "{\"Node650\":\"bustype\"}"
+                },
+                {
+                        "name": "SS_0_Node650$voltage_A",
+                        "type": "string",
+                        "global": false,
+                        "info": "{\"Node650\":\"voltage_A\"}"
+                },
+                {
+                        "name": "SS_0_Node650$voltage_B",
+                        "type": "string",
+                        "global": false,
+                        "info": "{\"Node650\":\"voltage_B\"}"
+                },
+                {
+                        "name": "SS_0_Node650$voltage_C",
+                        "type": "string",
+                        "global": false,
+                        "info": "{\"Node650\":\"voltage_C\"}"
+                },
+                {
+                        "name": "SS_0_Node650$nominal_voltage",
+                        "type": "string",
+                        "global": false,
+                        "info": "{\"Node650\":\"nominal_voltage\"}"
+                },
+                {
+                        "name": "SS_0_Node680$phases",
+                        "type": "string",
+                        "global": false,
+                        "info": "{\"Node680\":\"phases\"}"
+                },
+                {
+                        "name": "SS_0_Node680$voltage_A",
+                        "type": "string",
+                        "global": false,
+                        "info": "{\"Node680\":\"voltage_A\"}"
+                },
+                {
+                        "name": "SS_0_Node680$voltage_B",
+                        "type": "string",
+                        "global": false,
+                        "info": "{\"Node680\":\"voltage_B\"}"
+                },
+                {
+                        "name": "SS_0_Node680$voltage_C",
+                        "type": "string",
+                        "global": false,
+                        "info": "{\"Node680\":\"voltage_C\"}"
+                },
+                {
+                        "name": "SS_0_Node680$nominal_voltage",
+                        "type": "string",
+                        "global": false,
+                        "info": "{\"Node680\":\"nominal_voltage\"}"
+                },
+                {
+                        "name": "SS_0_Node684$phases",
+                        "type": "string",
+                        "global": false,
+                        "info": "{\"Node684\":\"phases\"}"
+                },
+                {
+                        "name": "SS_0_Node684$voltage_A",
+                        "type": "string",
+                        "global": false,
+                        "info": "{\"Node684\":\"voltage_A\"}"
+                },
+                {
+                        "name": "SS_0_Node684$voltage_B",
+                        "type": "string",
+                        "global": false,
+                        "info": "{\"Node684\":\"voltage_B\"}"
+                },
+                {
+                        "name": "SS_0_Node684$voltage_C",
+                        "type": "string",
+                        "global": false,
+                        "info": "{\"Node684\":\"voltage_C\"}"
+                },
+                {
+                        "name": "SS_0_Node684$nominal_voltage",
+                        "type": "string",
+                        "global": false,
+                        "info": "{\"Node684\":\"nominal_voltage\"}"
+                },
+                {
+                        "name": "SS_0_Load634$phases",
+                        "type": "string",
+                        "global": false,
+                        "info": "{\"Load634\":\"phases\"}"
+                },
+                {
+                        "name": "SS_0_Load634$voltage_A",
+                        "type": "string",
+                        "global": false,
+                        "info": "{\"Load634\":\"voltage_A\"}"
+                },
+                {
+                        "name": "SS_0_Load634$voltage_B",
+                        "type": "string",
+                        "global": false,
+                        "info": "{\"Load634\":\"voltage_B\"}"
+                },
+                {
+                        "name": "SS_0_Load634$voltage_C",
+                        "type": "string",
+                        "global": false,
+                        "info": "{\"Load634\":\"voltage_C\"}"
+                },
+                {
+                        "name": "SS_0_Load634$constant_power_A",
+                        "type": "string",
+                        "global": false,
+                        "info": "{\"Load634\":\"constant_power_A\"}"
+                },
+                {
+                        "name": "SS_0_Load634$constant_power_B",
+                        "type": "string",
+                        "global": false,
+                        "info": "{\"Load634\":\"constant_power_B\"}"
+                },
+                {
+                        "name": "SS_0_Load634$constant_power_C",
+                        "type": "string",
+                        "global": false,
+                        "info": "{\"Load634\":\"constant_power_C\"}"
+                },
+                {
+                        "name": "SS_0_Load634$nominal_voltage",
+                        "type": "string",
+                        "global": false,
+                        "info": "{\"Load634\":\"nominal_voltage\"}"
+                },
+                {
+                        "name": "SS_0_Load645$phases",
+                        "type": "string",
+                        "global": false,
+                        "info": "{\"Load645\":\"phases\"}"
+                },
+                {
+                        "name": "SS_0_Load645$voltage_A",
+                        "type": "string",
+                        "global": false,
+                        "info": "{\"Load645\":\"voltage_A\"}"
+                },
+                {
+                        "name": "SS_0_Load645$voltage_B",
+                        "type": "string",
+                        "global": false,
+                        "info": "{\"Load645\":\"voltage_B\"}"
+                },
+                {
+                        "name": "SS_0_Load645$voltage_C",
+                        "type": "string",
+                        "global": false,
+                        "info": "{\"Load645\":\"voltage_C\"}"
+                },
+                {
+                        "name": "SS_0_Load645$constant_power_B",
+                        "type": "string",
+                        "global": false,
+                        "info": "{\"Load645\":\"constant_power_B\"}"
+                },
+                {
+                        "name": "SS_0_Load645$nominal_voltage",
+                        "type": "string",
+                        "global": false,
+                        "info": "{\"Load645\":\"nominal_voltage\"}"
+                },
+                {
+                        "name": "SS_0_Load646$phases",
+                        "type": "string",
+                        "global": false,
+                        "info": "{\"Load646\":\"phases\"}"
+                },
+                {
+                        "name": "SS_0_Load646$voltage_A",
+                        "type": "string",
+                        "global": false,
+                        "info": "{\"Load646\":\"voltage_A\"}"
+                },
+                {
+                        "name": "SS_0_Load646$voltage_B",
+                        "type": "string",
+                        "global": false,
+                        "info": "{\"Load646\":\"voltage_B\"}"
+                },
+                {
+                        "name": "SS_0_Load646$voltage_C",
+                        "type": "string",
+                        "global": false,
+                        "info": "{\"Load646\":\"voltage_C\"}"
+                },
+                {
+                        "name": "SS_0_Load646$constant_impedance_B",
+                        "type": "string",
+                        "global": false,
+                        "info": "{\"Load646\":\"constant_impedance_B\"}"
+                },
+                {
+                        "name": "SS_0_Load646$nominal_voltage",
+                        "type": "string",
+                        "global": false,
+                        "info": "{\"Load646\":\"nominal_voltage\"}"
+                },
+                {
+                        "name": "SS_0_Load652$phases",
+                        "type": "string",
+                        "global": false,
+                        "info": "{\"Load652\":\"phases\"}"
+                },
+                {
+                        "name": "SS_0_Load652$voltage_A",
+                        "type": "string",
+                        "global": false,
+                        "info": "{\"Load652\":\"voltage_A\"}"
+                },
+                {
+                        "name": "SS_0_Load652$voltage_B",
+                        "type": "string",
+                        "global": false,
+                        "info": "{\"Load652\":\"voltage_B\"}"
+                },
+                {
+                        "name": "SS_0_Load652$voltage_C",
+                        "type": "string",
+                        "global": false,
+                        "info": "{\"Load652\":\"voltage_C\"}"
+                },
+                {
+                        "name": "SS_0_Load652$constant_impedance_A",
+                        "type": "string",
+                        "global": false,
+                        "info": "{\"Load652\":\"constant_impedance_A\"}"
+                },
+                {
+                        "name": "SS_0_Load652$nominal_voltage",
+                        "type": "string",
+                        "global": false,
+                        "info": "{\"Load652\":\"nominal_voltage\"}"
+                },
+                {
+                        "name": "SS_0_Load611$phases",
+                        "type": "string",
+                        "global": false,
+                        "info": "{\"Load611\":\"phases\"}"
+                },
+                {
+                        "name": "SS_0_Load611$voltage_A",
+                        "type": "string",
+                        "global": false,
+                        "info": "{\"Load611\":\"voltage_A\"}"
+                },
+                {
+                        "name": "SS_0_Load611$voltage_B",
+                        "type": "string",
+                        "global": false,
+                        "info": "{\"Load611\":\"voltage_B\"}"
+                },
+                {
+                        "name": "SS_0_Load611$voltage_C",
+                        "type": "string",
+                        "global": false,
+                        "info": "{\"Load611\":\"voltage_C\"}"
+                },
+                {
+                        "name": "SS_0_Load611$constant_current_C",
+                        "type": "string",
+                        "global": false,
+                        "info": "{\"Load611\":\"constant_current_C\"}"
+                },
+                {
+                        "name": "SS_0_Load611$constant_impedance_C",
+                        "type": "string",
+                        "global": false,
+                        "info": "{\"Load611\":\"constant_impedance_C\"}"
+                },
+                {
+                        "name": "SS_0_Load611$nominal_voltage",
+                        "type": "string",
+                        "global": false,
+                        "info": "{\"Load611\":\"nominal_voltage\"}"
+                },
+                {
+                        "name": "SS_0_Load6321$phases",
+                        "type": "string",
+                        "global": false,
+                        "info": "{\"Load6321\":\"phases\"}"
+                },
+                {
+                        "name": "SS_0_Load6321$voltage_A",
+                        "type": "string",
+                        "global": false,
+                        "info": "{\"Load6321\":\"voltage_A\"}"
+                },
+                {
+                        "name": "SS_0_Load6321$voltage_B",
+                        "type": "string",
+                        "global": false,
+                        "info": "{\"Load6321\":\"voltage_B\"}"
+                },
+                {
+                        "name": "SS_0_Load6321$voltage_C",
+                        "type": "string",
+                        "global": false,
+                        "info": "{\"Load6321\":\"voltage_C\"}"
+                },
+                {
+                        "name": "SS_0_Load6321$constant_power_A",
+                        "type": "string",
+                        "global": false,
+                        "info": "{\"Load6321\":\"constant_power_A\"}"
+                },
+                {
+                        "name": "SS_0_Load6321$constant_power_B",
+                        "type": "string",
+                        "global": false,
+                        "info": "{\"Load6321\":\"constant_power_B\"}"
+                },
+                {
+                        "name": "SS_0_Load6321$constant_power_C",
+                        "type": "string",
+                        "global": false,
+                        "info": "{\"Load6321\":\"constant_power_C\"}"
+                },
+                {
+                        "name": "SS_0_Load6321$nominal_voltage",
+                        "type": "string",
+                        "global": false,
+                        "info": "{\"Load6321\":\"nominal_voltage\"}"
+                },
+                {
+                        "name": "SS_0",
+                        "type": "string",
+                        "global": false,
+                        "destination": "ns3/SS_0",
+                        "info": "{\"Node633\":[\"phases\",\"voltage_A\",\"voltage_B\",\"voltage_C\",\"nominal_voltage\"],\"Node630\":[\"phases\",\"voltage_A\",\"voltage_B\",\"voltage_C\",\"nominal_voltage\"],\"Node632\":[\"phases\",\"voltage_A\",\"voltage_B\",\"voltage_C\",\"nominal_voltage\"],\"Node650\":[\"phases\",\"bustype\",\"voltage_A\",\"voltage_B\",\"voltage_C\",\"nominal_voltage\"],\"Node680\":[\"phases\",\"voltage_A\",\"voltage_B\",\"voltage_C\",\"nominal_voltage\"],\"Node684\":[\"phases\",\"voltage_A\",\"voltage_B\",\"voltage_C\",\"nominal_voltage\"],\"Load634\":[\"phases\",\"voltage_A\",\"voltage_B\",\"voltage_C\",\"constant_power_A\",\"constant_power_B\",\"constant_power_C\",\"nominal_voltage\"],\"Load645\":[\"phases\",\"voltage_A\",\"voltage_B\",\"voltage_C\",\"constant_power_B\",\"nominal_voltage\"],\"Load646\":[\"phases\",\"voltage_A\",\"voltage_B\",\"voltage_C\",\"constant_impedance_B\",\"nominal_voltage\"],\"Load652\":[\"phases\",\"voltage_A\",\"voltage_B\",\"voltage_C\",\"constant_impedance_A\",\"nominal_voltage\"],\"Load611\":[\"phases\",\"voltage_A\",\"voltage_B\",\"voltage_C\",\"constant_current_C\",\"constant_impedance_C\",\"nominal_voltage\"],\"Load6321\":[\"phases\",\"voltage_A\",\"voltage_B\",\"voltage_C\",\"constant_power_A\",\"constant_power_B\",\"constant_power_C\",\"nominal_voltage\"]}"
+                },
+                {
+                        "name": "SS_1_Load671$phases",
+                        "type": "string",
+                        "global": false,
+                        "info": "{\"Load671\":\"phases\"}"
+                },
+                {
+                        "name": "SS_1_Load671$voltage_A",
+                        "type": "string",
+                        "global": false,
+                        "info": "{\"Load671\":\"voltage_A\"}"
+                },
+                {
+                        "name": "SS_1_Load671$voltage_B",
+                        "type": "string",
+                        "global": false,
+                        "info": "{\"Load671\":\"voltage_B\"}"
+                },
+                {
+                        "name": "SS_1_Load671$voltage_C",
+                        "type": "string",
+                        "global": false,
+                        "info": "{\"Load671\":\"voltage_C\"}"
+                },
+                {
+                        "name": "SS_1_Load671$constant_power_A",
+                        "type": "string",
+                        "global": false,
+                        "info": "{\"Load671\":\"constant_power_A\"}"
+                },
+                {
+                        "name": "SS_1_Load671$constant_power_B",
+                        "type": "string",
+                        "global": false,
+                        "info": "{\"Load671\":\"constant_power_B\"}"
+                },
+                {
+                        "name": "SS_1_Load671$constant_power_C",
+                        "type": "string",
+                        "global": false,
+                        "info": "{\"Load671\":\"constant_power_C\"}"
+                },
+                {
+                        "name": "SS_1_Load671$nominal_voltage",
+                        "type": "string",
+                        "global": false,
+                        "info": "{\"Load671\":\"nominal_voltage\"}"
+                },
+                {
+                        "name": "SS_1_Load675$phases",
+                        "type": "string",
+                        "global": false,
+                        "info": "{\"Load675\":\"phases\"}"
+                },
+                {
+                        "name": "SS_1_Load675$voltage_A",
+                        "type": "string",
+                        "global": false,
+                        "info": "{\"Load675\":\"voltage_A\"}"
+                },
+                {
+                        "name": "SS_1_Load675$voltage_B",
+                        "type": "string",
+                        "global": false,
+                        "info": "{\"Load675\":\"voltage_B\"}"
+                },
+                {
+                        "name": "SS_1_Load675$voltage_C",
+                        "type": "string",
+                        "global": false,
+                        "info": "{\"Load675\":\"voltage_C\"}"
+                },
+                {
+                        "name": "SS_1_Load675$constant_power_A",
+                        "type": "string",
+                        "global": false,
+                        "info": "{\"Load675\":\"constant_power_A\"}"
+                },
+                {
+                        "name": "SS_1_Load675$constant_power_B",
+                        "type": "string",
+                        "global": false,
+                        "info": "{\"Load675\":\"constant_power_B\"}"
+                },
+                {
+                        "name": "SS_1_Load675$constant_power_C",
+                        "type": "string",
+                        "global": false,
+                        "info": "{\"Load675\":\"constant_power_C\"}"
+                },
+                {
+                        "name": "SS_1_Load675$constant_impedance_A",
+                        "type": "string",
+                        "global": false,
+                        "info": "{\"Load675\":\"constant_impedance_A\"}"
+                },
+                {
+                        "name": "SS_1_Load675$constant_impedance_B",
+                        "type": "string",
+                        "global": false,
+                        "info": "{\"Load675\":\"constant_impedance_B\"}"
+                },
+                {
+                        "name": "SS_1_Load675$constant_impedance_C",
+                        "type": "string",
+                        "global": false,
+                        "info": "{\"Load675\":\"constant_impedance_C\"}"
+                },
+                {
+                        "name": "SS_1_Load675$nominal_voltage",
+                        "type": "string",
+                        "global": false,
+                        "info": "{\"Load675\":\"nominal_voltage\"}"
+                },
+                {
+                        "name": "SS_1_Load692$phases",
+                        "type": "string",
+                        "global": false,
+                        "info": "{\"Load692\":\"phases\"}"
+                },
+                {
+                        "name": "SS_1_Load692$voltage_A",
+                        "type": "string",
+                        "global": false,
+                        "info": "{\"Load692\":\"voltage_A\"}"
+                },
+                {
+                        "name": "SS_1_Load692$voltage_B",
+                        "type": "string",
+                        "global": false,
+                        "info": "{\"Load692\":\"voltage_B\"}"
+                },
+                {
+                        "name": "SS_1_Load692$voltage_C",
+                        "type": "string",
+                        "global": false,
+                        "info": "{\"Load692\":\"voltage_C\"}"
+                },
+                {
+                        "name": "SS_1_Load692$constant_current_A",
+                        "type": "string",
+                        "global": false,
+                        "info": "{\"Load692\":\"constant_current_A\"}"
+                },
+                {
+                        "name": "SS_1_Load692$constant_current_B",
+                        "type": "string",
+                        "global": false,
+                        "info": "{\"Load692\":\"constant_current_B\"}"
+                },
+                {
+                        "name": "SS_1_Load692$constant_current_C",
+                        "type": "string",
+                        "global": false,
+                        "info": "{\"Load692\":\"constant_current_C\"}"
+                },
+                {
+                        "name": "SS_1_Load692$nominal_voltage",
+                        "type": "string",
+                        "global": false,
+                        "info": "{\"Load692\":\"nominal_voltage\"}"
+                },
+                {
+                        "name": "SS_1",
+                        "type": "string",
+                        "global": false,
+                        "destination": "ns3/SS_1",
+                        "info": "{\"Load671\":[\"phases\",\"voltage_A\",\"voltage_B\",\"voltage_C\",\"constant_power_A\",\"constant_power_B\",\"constant_power_C\",\"nominal_voltage\"],\"Load675\":[\"phases\",\"voltage_A\",\"voltage_B\",\"voltage_C\",\"constant_power_A\",\"constant_power_B\",\"constant_power_C\",\"constant_impedance_A\",\"constant_impedance_B\",\"constant_impedance_C\",\"nominal_voltage\"],\"Load692\":[\"phases\",\"voltage_A\",\"voltage_B\",\"voltage_C\",\"constant_current_A\",\"constant_current_B\",\"constant_current_C\",\"nominal_voltage\"]}"
+                }
+        ]
+}

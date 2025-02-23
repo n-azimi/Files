@@ -1,0 +1,68 @@
+{
+        "Channel": [
+                {
+                        "P2PDelay": "2ms",
+                        "CSMAdelay": "6560",
+                        "dataRate": "5Mbps",
+                        "jitterMin": 10,
+                        "jitterMax": 100,
+                        "WifiPropagationDelay": "ConstantSpeedPropagationDelayModel",
+                        "WifiRate": "DsssRate1Mbps",
+                        "WifiStandard": "80211b",
+                        "P2PRate": "250Mb/s"
+                }
+        ],
+        "Gridlayout": [
+                {
+                        "MinX": 0,
+                        "MinY": 0,
+                        "DeltaX": 2000,
+                        "DeltaY": 2000,
+                        "GridWidth": 3,
+                        "LayoutType": "RowFirst",
+                        "SetPos": 1
+                }
+        ],
+        "5GSetup": [
+                {
+                        "S1uLinkDelay": 1,
+                        "N1Delay": 0.01,
+                        "N2Delay": 0.01,
+                        "Srs": 10,
+                        "UeRow": 2.0,
+                        "UeCol": 2,
+                        "GnBRow": 2,
+                        "GnBCol": 2.0,
+                        "numUE": 2,
+                        "numEnb": 2,
+                        "scenario": "UMi-StreetCayon",
+                        "txPower": 40
+                }
+        ],
+        "Node": [
+                {
+                        "name": 0,
+                        "connections": [
+                                1
+                        ],
+                        "UseCSMA": 0,
+                        "MTU": 1500,
+                        "UseWifi": 1,
+                        "x": 2,
+                        "y": 50,
+                        "error": "0.001"
+                },
+                {
+                        "name": 1,
+                        "connections": [
+                                0
+                        ],
+                        "UseCSMA": 0,
+                        "MTU": 1500,
+                        "UseWifi": 1,
+                        "x": 9,
+                        "y": 4,
+                        "error": "0.001"
+                }
+        ]
+}
