@@ -115,7 +115,7 @@ for i in l1["objects"]:
 
 
 for i in sorted(list(points.keys())):
-    f = open("../test_conf/points_"+i+".csv", "w")
+    f = open("test_conf/points_"+i+".csv", "w")
     f.write(points[i])
     f.close()
 
