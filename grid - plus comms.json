@@ -1,0 +1,162 @@
+{
+        "Simulation": [
+                {
+                        "SimTime": 35,
+                        "StartTime": 0.0,
+                        "PollReqFreq": 5,
+                        "includeMIM": 0,
+                        "UseDynTop": 0,
+                        "MonitorPerf": 1
+                }
+        ],
+        "microgrid": [
+                {
+                        "name": "SS_0",
+                        "dest": "ns3/SS_0",
+                        "load": [
+                                "Load634",
+                                "Load645",
+                                "Load646",
+                                "Load652",
+                                "Load611",
+                                "Load6321"
+                        ],
+                        "node": [
+                                "Node633",
+                                "Node630",
+                                "Node632",
+                                "Node650",
+                                "Node680",
+                                "Node684"
+                        ]
+                },
+                {
+                        "name": "SS_1",
+                        "dest": "ns3/SS_1",
+                        "load": [
+                                "Load671",
+                                "Load6711",
+                                "Load675",
+                                "Load692"
+                        ]
+                }
+        ],
+        "communication_nodes": [
+        {
+                "name": "comm1",
+                "microgirds": [
+                "SS_0"
+                ],
+                "communication_node": [
+                "comm2"
+                ]
+        },
+        {
+                "name": "comm2",
+                "microgirds": [
+                "SS_0"
+                ],
+                "communication_node": [
+                "comm3"
+                ]
+        },
+        {
+                "name": "comm3",
+                "microgirds": [
+                "SS_1"
+                ],
+                "communication_node": [
+                "comm1"
+                ]
+        }
+   ],
+
+        "communication_links": [
+        {
+            "source": "comm1",
+            "target": "comm2",
+            "bandwidth": "100Mbps",
+            "delay": "5ms"
+        },
+        {
+            "source": "comm2",
+            "target": "comm3",
+            "bandwidth": "50Mbps",
+            "delay": "10ms"
+        },
+        {
+            "source": "comm3",
+            "target": "comm1",
+            "bandwidth": "75Mbps",
+            "delay": "8ms"
+        },
+        {
+            "source": "comm1",
+            "target": "SS_0",
+            "bandwidth": "200Mbps",
+            "delay": "2ms"
+        },
+        {
+            "source": "comm2",
+            "target": "SS_0",
+            "bandwidth": "150Mbps",
+            "delay": "3ms"
+        },
+        {
+            "source": "comm3",
+            "target": "SS_1",
+            "bandwidth": "120Mbps",
+            "delay": "4ms"
+        }
+    ],
+
+        "DDoS": [
+                {
+                        "NumberOfBots": 10,
+                        "Active": 1,
+                        "Start": 1,
+                        "End": 11,
+                        "TimeOn": 10.0,
+                        "TimeOff": 0.0,
+                        "PacketSize": 100000,
+                        "Rate": "600000kb/s",
+                        "NodeType": [
+                                "MIM"
+                        ],
+                        "NodeID": [
+                                2
+                        ]
+                }
+        ],
+        "MIM": [
+                {
+                        "NumberAttackers": 2,
+                        "listMIM": "0,1"
+                },
+                {
+                        "name": "MIM0",
+                        "attack_val": "TRIP",
+                        "real_val": "NA",
+                        "node_id": "switch1",
+                        "point_id": "status",
+                        "scenario_id": "b",
+                        "attack_type": "3",
+                        "Start": 120,
+                        "End": 180
+                },
+                {
+                        "name": "MIM1",
+                        "attack_val": "TRIP",
+                        "real_val": "NA",
+                        "node_id": "switch1",
+                        "point_id": "status",
+                        "scenario_id": "b",
+                        "attack_type": "3",
+                        "Start": 120,
+                        "End": 180
+                }
+        ],
+        "controlCenter": {
+                "name": "Monitor1"
+        }
+}
