@@ -97,81 +97,30 @@ Key steps:
 4. Applies adaptive weighting of outputs
 5. Returns final hybrid result
 
-## 6. Step-by-Step Usage Guide
-### 6.1 Basic Implementation
-```python
-import torch
-import torch.nn as nn
-from torchvision.models import resnet18
-from QNN import get_qnn_model
 
-# Step 1: Prepare your classical CNN model
-cnn_model = resnet18(pretrained=True)
-cnn_model.fc = nn.Linear(512, 10)  # For 10-class classification
+## 6. Parameters and Configuration
 
-# Step 2: Set up device
-device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+| Parameter | Description | Type | Default | Range/Options |
+|-----------|-------------|------|---------|---------------|
+| cnn_model | Classical CNN model | nn.Module | Required | Any PyTorch model |
+| device | Computation device | torch.device | Required | 'cuda' or 'cpu' |
+| output_dim | Output dimension | int | 10 | ≥ 2 |
+| circuit_depth | Quantum circuit depth | int | 2 | ≥ 1 |
+| batch_size_limit | Max quantum batch size | int | 64 | ≥ 1 |
+| param_mode | Parameter mode | str | 'vector' | 'scalar' or 'vector' |
+| num_params | Number of parameters | int | 4 | ≥ 1 |
+| noise_strength | Quantum noise strength | float | 0.05 | 0.0 to 1.0 |
+| use_shots | Use shot-based sampling | bool | True | True/False |
+| adversarial_defense | Enable adversarial defense | bool | True | True/False |
+| feature_dim_reduction | Feature dimension after reduction | int | None | None or ≥ 1 |
+| entanglement_type | Entanglement pattern | str | 'linear_entanglement_ansatz' | See section 8 |
+| use_dynamic_weights | Enable dynamic weighting | bool | True | True/False |
+| use_backprop | Use backpropagation | bool | True | True/False |
+| encoding_method | Feature encoding method | str | 'enhanced_angle' | 'angle' or 'enhanced_angle' |
+| noise_model | Quantum noise model | str | 'depolarizing' | See section 10 |
+| feature_layer | CNN layer for feature extraction | str | None | Layer name or None |
 
-# Step 3: Create QNN model with defaults
-qnn_model = get_qnn_model(cnn_model, device)
-
-# Step 4: Use the model for inference
-input_data = torch.randn(1, 3, 224, 224)  # Example input
-output = qnn_model(input_data)
-predicted_class = torch.argmax(output, dim=1)
-```
-
-### 6.2 Training Loop Example
-```python
-import torch.optim as optim
-import torch.nn.functional as F
-from torch.utils.data import DataLoader
-from torchvision import datasets, transforms
-
-# Set up data loaders
-transform = transforms.Compose([
-    transforms.Resize(224),
-    transforms.ToTensor(),
-    transforms.Normalize((0.5, 0.5, 0.5), (0.5, 0.5, 0.5))
-])
-train_dataset = datasets.CIFAR10(root='./data', train=True, download=True, transform=transform)
-train_loader = DataLoader(train_dataset, batch_size=32, shuffle=True)
-
-# Initialize model and optimizer
-model = get_qnn_model(cnn_model, device)
-optimizer = optim.Adam([
-    {'params': model.cnn_model.parameters(), 'lr': 1e-4},
-    {'params': [model.theta, model.phi, model.raw_noise], 'lr': 1e-2}
-])
-
-# Training loop
-num_epochs = 5
-for epoch in range(num_epochs):
-    model.train()
-    for batch_idx, (data, target) in enumerate(train_loader):
-        data, target = data.to(device), target.to(device)
-        
-        # Zero gradients
-        optimizer.zero_grad()
-        
-        # Forward pass
-        output = model(data)
-        
-        # Calculate loss
-        loss = F.nll_loss(output, target)
-        
-        # Backward pass
-        loss.backward()
-        
-        # Update parameters
-        optimizer.step()
-        
-        # Print progress
-        if batch_idx % 100 == 0:
-            print(f'Epoch: {epoch+1}/{num_epochs}, Batch: {batch_idx}/{len(train_loader)}, Loss: {loss.item():.4f}')
-```
-
-### 6.3 Customizing the QNN Model
+## 7. Customizing the QNN Model
 ```python
 # Create custom QNN model
 custom_qnn = get_qnn_model(
@@ -194,55 +143,6 @@ custom_qnn = get_qnn_model(
 )
 ```
 
-## 7. Parameters and Configuration
-### 7.1 Comprehensive Parameter List
-
-| Parameter | Description | Type | Default | Range/Options |
-|-----------|-------------|------|---------|---------------|
-| cnn_model | Classical CNN model | nn.Module | Required | Any PyTorch model |
-| device | Computation device | torch.device | Required | 'cuda' or 'cpu' |
-| output_dim | Output dimension | int | 10 | ≥ 2 |
-| circuit_depth | Quantum circuit depth | int | 2 | ≥ 1 |
-| batch_size_limit | Max quantum batch size | int | 64 | ≥ 1 |
-| param_mode | Parameter mode | str | 'vector' | 'scalar' or 'vector' |
-| num_params | Number of parameters | int | 4 | ≥ 1 |
-| noise_strength | Quantum noise strength | float | 0.05 | 0.0 to 1.0 |
-| use_shots | Use shot-based sampling | bool | True | True/False |
-| adversarial_defense | Enable adversarial defense | bool | True | True/False |
-| feature_dim_reduction | Feature dimension after reduction | int | None | None or ≥ 1 |
-| entanglement_type | Entanglement pattern | str | 'linear_entanglement_ansatz' | See section 8 |
-| use_dynamic_weights | Enable dynamic weighting | bool | True | True/False |
-| use_backprop | Use backpropagation | bool | True | True/False |
-| encoding_method | Feature encoding method | str | 'enhanced_angle' | 'angle' or 'enhanced_angle' |
-| noise_model | Quantum noise model | str | 'depolarizing' | See section 10 |
-| feature_layer | CNN layer for feature extraction | str | None | Layer name or None |
-
-### 7.2 QNN Model Configuration Example
-```python
-# Configure QNN with different settings for different tasks
-# Image classification configuration
-image_classification_qnn = get_qnn_model(
-    cnn_model=cnn_model,
-    device=device,
-    output_dim=1000,                      # ImageNet classes
-    circuit_depth=2,                      # Balance performance
-    batch_size_limit=16,                  # For high-res images
-    encoding_method='enhanced_angle',     # Better preservation of spatial info
-    entanglement_type='linear_entanglement_ansatz'  # Efficient entanglement
-)
-
-# Adversarial robustness configuration
-robust_qnn = get_qnn_model(
-    cnn_model=cnn_model,
-    device=device,
-    noise_strength=0.15,                  # Higher noise
-    adversarial_defense=True,             # Enable defense
-    use_shots=True,                       # Adds natural noise
-    noise_model='mixed',                  # Multiple noise types
-    entanglement_type='full_entanglement_ansatz'  # More complex entanglement
-)
-```
-
 ## 8. Entanglement Approaches
 ### 8.1 No Entanglement Ansatz
 Description: Qubits remain independent with no entanglement operations
@@ -251,7 +151,6 @@ Implementation:
 # No operations needed
 pass
 ```
-Use case: Baseline quantum processing, quantum feature embedding
 
 ### 8.2 Linear Entanglement Ansatz
 Description: Each qubit is entangled with its adjacent qubits
@@ -260,7 +159,6 @@ Implementation:
 for i in range(num_qubits - 1):
     qml.CNOT(wires=[i, i+1])
 ```
-Use case: Efficiently captures nearest-neighbor correlations with low circuit depth
 
 ### 8.3 Full Entanglement Ansatz
 Description: All-to-all connections between qubits
@@ -270,7 +168,6 @@ for i in range(num_qubits):
     for j in range(i + 1, num_qubits):
         qml.CNOT(wires=[i, j])
 ```
-Use case: Maximum entanglement for capturing complex patterns, at cost of circuit depth
 
 ### 8.4 Star Entanglement Ansatz
 Description: One central qubit entangled with all others
@@ -280,16 +177,7 @@ central_qubit = 0
 for i in range(1, num_qubits):
     qml.CNOT(wires=[central_qubit, i])
 ```
-Use case: Efficient compromise between connectivity and circuit depth
 
-### 8.5 Changing Entanglement Type at Runtime
-```python
-# Create model with default entanglement
-model = get_qnn_model(cnn_model, device)
-
-# Change entanglement type
-model.set_entanglement_type('full_entanglement_ansatz')
-```
 
 ## 9. Encoding Methods
 
