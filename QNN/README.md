@@ -181,7 +181,7 @@ for i in range(1, num_qubits):
 
 ## 9. Encoding Methods
 
-Encoding classical data into quantum states is a crucial aspect of quantum machine learning. The QNN implementation offers two primary encoding methods:
+Encoding classical data into quantum states is a crucial aspect of quantum machine learning. Our QNN implementation offers two encoding methods:
 
 ### 9.1 Standard Angle Encoding
 
@@ -194,21 +194,6 @@ This method uses RY rotations to encode classical features into quantum states:
 3. **Qubit Assignment**:
    - If features > qubits: Features are combined using weighted averages
    - If features < qubits: Features are duplicated across multiple qubits
-
-**Code Example**:
-```python
-# Calculate rotation angles for standard encoding
-feature_mean = cnn_features.mean(dim=1, keepdim=True)
-feature_std = cnn_features.std(dim=1, keepdim=True) + 1e-6
-normalized_features = (cnn_features - feature_mean) / feature_std
-angles = torch.pi + torch.atan(normalized_features) * (torch.pi / 2)
-```
-
-**Circuit Implementation**:
-```
-for i in range(num_qubits):
-    qml.RY(angles[i], wires=i)
-```
 
 ### 9.2 Enhanced Angle Encoding
 
@@ -232,35 +217,10 @@ This method preserves more of the original data structure by using all three rot
    - RY angles scaled to [-π, π] range
    - RZ angles scaled to [-2π, 2π] range
 
-**Code Example**:
-```python
-# Call the enhanced encoding function
-rx_angles, ry_angles, rz_angles = angle_encoding_enhanced(features, num_qubits)
-```
-
-**Circuit Implementation**:
-```
-for i in range(num_qubits):
-    qml.RX(rx_angles[i], wires=i)
-    qml.RY(ry_angles[i], wires=i)
-    qml.RZ(rz_angles[i], wires=i)
-```
-
-### 9.3 Encoding Comparison and Selection
-
-| Aspect | Standard Encoding | Enhanced Encoding |
-|--------|-------------------|-------------------|
-| Data Preservation | Moderate | High |
-| Circuit Complexity | Low | Medium |
-| Parameter Count | num_qubits | 3 × num_qubits |
-| Backprop Compatibility | Full | Full |
-| Use Case | Simple problems, limited qubits | Complex data, pattern recognition |
-
-To select an encoding method, set the `encoding_method` parameter during model initialization or use `set_encoding_method()` to change it dynamically.
 
 ## 10. Training and Optimization
 
-The QNN model is designed to be trained using standard PyTorch optimization techniques:
+Our QNN model is designed to be trained using standard PyTorch optimization techniques:
 
 ### 10.1 Loss Functions
 
@@ -270,66 +230,16 @@ The hybrid model outputs log probabilities, making it compatible with standard c
 criterion = nn.CrossEntropyLoss()
 ```
 
-### 10.2 Optimizer Configuration
-
-Due to the hybrid nature, consider using different learning rates for classical and quantum parameters:
-
-```python
-# Separate parameter groups
-classical_params = []
-quantum_params = []
-
-for name, param in qnn_model.named_parameters():
-    if name in ['theta', 'phi', 'raw_noise']:
-        quantum_params.append(param)
-    else:
-        classical_params.append(param)
-
-optimizer = torch.optim.Adam([
-    {'params': classical_params, 'lr': 1e-3},
-    {'params': quantum_params, 'lr': 1e-2}
-])
-```
-
-### 10.3 Training Loop
-
-```python
-def train_model(model, train_loader, optimizer, criterion, epochs=10):
-    for epoch in range(epochs):
-        model.train()
-        running_loss = 0.0
-        
-        for inputs, labels in train_loader:
-            inputs, labels = inputs.to(device), labels.to(device)
-            
-            # Zero gradients
-            optimizer.zero_grad()
-            
-            # Forward pass
-            outputs = model(inputs)
-            loss = criterion(outputs, labels)
-            
-            # Backward pass and optimize
-            loss.backward()
-            optimizer.step()
-            
-            running_loss += loss.item()
-            
-        print(f"Epoch {epoch+1}/{epochs}, Loss: {running_loss/len(train_loader)}")
-```
-
 ### 10.4 Differentiation Methods
 
-The QNN supports two differentiation methods:
+Our QNN supports two differentiation methods:
 
 1. **Backpropagation** (`use_backprop=True`):
-   - Faster training
    - Incompatible with shots and noise models
    - Uses Pennylane's quantum gradient computation
 
 2. **Parameter-shift** (`use_backprop=False`):
    - Compatible with all quantum features
-   - Slower but more physically realistic
    - Required for shot-based or noisy simulations
 
 ## 11. Quantum Circuit Design
@@ -340,7 +250,7 @@ The quantum circuit follows this general structure:
 
 1. **Initial Encoding Layer**: Encode classical data into quantum states
 2. **Repeated Variational Blocks** (controlled by `circuit_depth`):
-   - Optional noise rotations for robustness
+   - Optional noise rotations (for robustness)
    - Entanglement layer (configurable pattern)
    - Parameterized rotation layer with trainable parameters
    - Re-application of data encoding with decay
@@ -360,124 +270,12 @@ Quantum parameters can be configured in two modes:
    - More expressive model, more parameters to train
    - `num_params` controls the vector size
 
-### 11.3 Entanglement Architecture
-
-The choice of entanglement pattern significantly impacts model expressivity and training:
-
-1. **No Entanglement**: Simplest model, no quantum advantage
-2. **Linear Entanglement**: Good balance of expressivity and circuit depth
-3. **Full Entanglement**: Most expressive, but can be harder to train
-4. **Star Entanglement**: Efficient for certain problem structures
-
 ## 12. Adversarial Defense Mechanism
 
 The QNN implements adversarial defense capabilities:
 
-### 12.1 Quantum Noise as Defense
+### 12.1 Quantum Noise
 
-Quantum noise naturally creates uncertainty in predictions, making the model more robust against adversarial attacks:
+### 12.2 Input Randomization (Optional)
 
-```python
-# Noise strength is trainable
-noise_strength = constrained_noise_activation(self.raw_noise).item()
-```
-
-### 12.2 Input Randomization
-
-When `adversarial_defense` is enabled and `defense_mode=True`:
-
-```python
-if defense_mode and self.adversarial_defense:
-    noise_level = constrained_noise_activation(self.raw_noise).item() * 2
-    noise_level = min(0.1, noise_level)  # Cap at 0.1
-    input_noise = torch.randn_like(input_data) * noise_level
-    input_data = input_data + input_noise
-```
-
-### 12.3 Output Smoothing
-
-```python
-# Apply smoothing to quantum outputs
-kernel_size = 3
-if quantum_output_probabilities.shape[1] >= kernel_size:
-    padding = (kernel_size - 1) // 2
-    smoothed_quantum = F.avg_pool1d(
-        quantum_output_probabilities.unsqueeze(1),
-        kernel_size=kernel_size,
-        stride=1,
-        padding=padding
-    ).squeeze(1)
-```
-
-## 13. Examples and Use Cases
-
-### 13.1 Image Classification
-
-```python
-# Create a QNN model for MNIST classification
-qnn_model = get_qnn_model(
-    cnn_model=cnn_model,
-    device=device,
-    output_dim=10,
-    circuit_depth=2,
-    encoding_method='enhanced_angle',
-    entanglement_type='linear_entanglement_ansatz'
-)
-
-# Train and evaluate
-train_model(qnn_model, train_loader, optimizer, criterion, epochs=5)
-accuracy = evaluate_model(qnn_model, test_loader)
-```
-
-### 13.2 Adversarial Testing
-
-```python
-# Create adversarial examples
-adversarial_examples = generate_fgsm_attack(
-    model=qnn_model,
-    images=test_images,
-    labels=test_labels,
-    epsilon=0.1
-)
-
-# Test standard accuracy
-standard_accuracy = evaluate_model(qnn_model, test_loader)
-
-# Test adversarial accuracy with defense mode enabled
-adversarial_accuracy = evaluate_adversarial_examples(
-    qnn_model, 
-    adversarial_examples,
-    test_labels,
-    defense_mode=True
-)
-
-print(f"Standard accuracy: {standard_accuracy:.2f}%")
-print(f"Adversarial accuracy: {adversarial_accuracy:.2f}%")
-```
-
-## 14. Future Directions
-
-### 14.1 Hardware Compatibility
-
-The current QNN implementation is designed for simulators but can be extended to real quantum hardware:
-
-```python
-# Example of adapting to real quantum hardware
-dev_hardware = qml.device('qiskit.ibmq', wires=num_qubits, backend='ibmq_manila')
-```
-
-### 14.2 Advanced Quantum Features
-
-Potential extensions include:
-
-1. **Quantum Kernels**: Using quantum circuits as kernel functions
-2. **Quantum Embedding Layers**: Learning optimal encodings 
-3. **Quantum Error Mitigation**: Adding error correction techniques
-
-## 15. Conclusion
-
-The QNN implementation provides a sophisticated integration of classical and quantum computing. By combining CNNs with quantum circuits, it offers potential advantages in certain machine learning tasks while providing flexibility in model design and configuration.
-
-The modular architecture allows for experimentation with different quantum circuit designs, encoding methods, and entanglement patterns. The dynamic weighting system intelligently combines classical and quantum outputs to maximize model performance.
-
-As quantum hardware continues to improve, this hybrid approach provides a pathway to leverage quantum advantages while maintaining the proven capabilities of classical deep learning.
+### 12.3 Output Smoothing (Optional)
