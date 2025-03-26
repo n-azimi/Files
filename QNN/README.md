@@ -1,7 +1,4 @@
 # Quantum Neural Network (QNN) Implementation Documentation
-**Version: 3.1.0**
-**Author: n-azimi**
-**Date: 2025-03-26**
 
 ## Table of Contents
 1. [Introduction](#introduction)
