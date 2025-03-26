@@ -3,7 +3,7 @@
 ## 1. Introduction
 This documentation provides a comprehensive guide to our QNN (v3.1.0) implementation. Our hybrid quantum-classical neural network framework combines traditional convolutional neural networks (CNNs) with quantum circuits to create advanced hybrid models that can leverage quantum computational advantages while maintaining classical deep learning strengths.
 
-Our implementation is specifically designed for data privacy and security applications, featuring quantum entanglement strategies, noise modeling, adversarial defense mechanisms, and feature encoding techniques.
+Our implementation is specifically designed for data privacy applications, featuring quantum entanglement strategies, noise modeling, adversarial defense mechanisms, and feature encoding techniques.
 
 ## 2. Hybrid Quantum-Classical Approach
 Our implementation uses a hybrid approach where:
