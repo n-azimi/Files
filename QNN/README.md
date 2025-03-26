@@ -297,7 +297,7 @@ To provide more robustness against adversarial attacks, our implementation inclu
 
 ### 12.3 Output Smoothing (Optional)
 
-### 12.4 Shots-Based Noise
+### 12.4 Shots-Based Noise (Optional)
 
 In addition to explicit noise models, the QNN can introduce sampling noise by using shot-based measurements:
 
