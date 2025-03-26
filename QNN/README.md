@@ -272,7 +272,7 @@ Quantum parameters can be configured in two modes:
 
 ## 12. Adversarial Defense Mechanism
 
-The QNN implements adversarial defense capabilities:
+Our QNN implements several adversarial defense capabilities:
 
 ### 12.1 Quantum Noise
 
