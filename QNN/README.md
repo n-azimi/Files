@@ -1,54 +1,23 @@
-# Quantum Neural Network (QNN) Implementation Documentation
+# QNN (v3.1.0) Implementation Documentation
 
 ## 1. Introduction
-This documentation provides a comprehensive guide to the Quantum Neural Network (QNN) v3.1.0 implementation. This hybrid quantum-classical neural network framework combines traditional convolutional neural networks (CNNs) with quantum circuits to create advanced machine learning models that can leverage quantum computational advantages while maintaining classical deep learning strengths.
+This documentation provides a comprehensive guide to the QNN (v3.1.0) implementation. Our hybrid quantum-classical neural network framework combines traditional convolutional neural networks (CNNs) with quantum circuits to create advanced hybrid models that can leverage quantum computational advantages while maintaining classical deep learning strengths.
 
-The implementation is specifically designed for data privacy and security applications, featuring quantum entanglement strategies, noise modeling, adversarial defense mechanisms, and efficient feature encoding techniques.
+The implementation is specifically designed for data privacy and security applications, featuring quantum entanglement strategies, noise modeling, adversarial defense mechanisms, and feature encoding techniques.
 
-## 2. Theoretical Background
-### 2.1 Quantum Neural Networks Fundamentals
-Quantum Neural Networks represent a novel approach to machine learning that combines quantum computing principles with neural network architectures. The key advantages include:
-
-- **Quantum parallelism**: Processing multiple states simultaneously through quantum superposition
-- **Entanglement effects**: Allowing quantum correlations that can potentially outperform classical correlations
-- **Quantum interference**: Information processing through constructive and destructive interference patterns
-
-### 2.2 Hybrid Quantum-Classical Approach
-This implementation uses a hybrid approach where:
+## 2. Hybrid Quantum-Classical Approach
+Our implementation uses a hybrid approach where:
 
 - A classical CNN extracts features from input data
 - These features are encoded into quantum states
 - Quantum operations are applied to process information
 - Quantum measurements generate outputs that are combined with classical outputs
 
-This hybrid architecture allows the model to handle large input data classically while leveraging quantum advantages for specific computational tasks.
-
 ## 3. Installation and Requirements
-### 3.1 Prerequisites
-- Python 3.7 or higher
-- PyTorch 1.8 or higher
-- PennyLane 0.15 or higher
-- NumPy
-
-### 3.2 Installation Steps
-Install required packages:
-```bash
-pip install torch pennylane numpy
-```
-
-Clone the repository:
-```bash
-git clone https://github.com/n-azimi/CS573.git
-cd CS573
-```
-
-Import the QNN module in your project:
-```python
-from QNN import get_qnn_model
-```
+TBC
 
 ## 4. Implementation Architecture
-The QNN implementation follows a modular architecture with these major components:
+Our QNN implementation follows a modular architecture with these major components:
 
 ### 4.1 High-Level Architecture
 ```
@@ -61,12 +30,12 @@ The QNN implementation follows a modular architecture with these major component
 ### 4.2 Data Flow
 1. **Input Processing**: Raw data is processed by a classical CNN
 2. **Feature Extraction**: Intermediate features are extracted from CNN layers
-3. **Feature Dimensionality Reduction**: PCA or other methods reduce feature dimensions
+3. **Feature Dimensionality Reduction**: FDR methods reduce feature dimensions
 4. **Quantum Encoding**: Classical features are encoded into quantum states
 5. **Quantum Processing**: Quantum circuit applies rotations and entanglement operations
 6. **Quantum Measurement**: Quantum states are measured to produce probabilities
 7. **Hybrid Combination**: Classical and quantum outputs are combined adaptively
-8. **Output Generation**: Final classification or regression output is produced
+8. **Output Generation**: Final classification output is produced
 
 ## 5. Key Components
 
