@@ -117,7 +117,7 @@ Key steps:
 | use_dynamic_weights | Enable dynamic weighting | bool | True | True/False |
 | use_backprop | Use backpropagation | bool | True | True/False |
 | encoding_method | Feature encoding method | str | 'enhanced_angle' | 'angle' or 'enhanced_angle' |
-| noise_model | Quantum noise model | str | 'depolarizing' | See section 10 |
+| noise_model | Quantum noise model | str | 'depolarizing' | See section 12 |
 | feature_layer | CNN layer for feature extraction | str | None | Layer name or None |
 
 ## 7. Customizing the QNN Model
