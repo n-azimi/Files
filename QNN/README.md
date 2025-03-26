@@ -1,9 +1,9 @@
 # QNN (v3.1.0) Implementation Documentation
 
 ## 1. Introduction
-This documentation provides a comprehensive guide to the QNN (v3.1.0) implementation. Our hybrid quantum-classical neural network framework combines traditional convolutional neural networks (CNNs) with quantum circuits to create advanced hybrid models that can leverage quantum computational advantages while maintaining classical deep learning strengths.
+This documentation provides a comprehensive guide to our QNN (v3.1.0) implementation. Our hybrid quantum-classical neural network framework combines traditional convolutional neural networks (CNNs) with quantum circuits to create advanced hybrid models that can leverage quantum computational advantages while maintaining classical deep learning strengths.
 
-The implementation is specifically designed for data privacy and security applications, featuring quantum entanglement strategies, noise modeling, adversarial defense mechanisms, and feature encoding techniques.
+Our implementation is specifically designed for data privacy and security applications, featuring quantum entanglement strategies, noise modeling, adversarial defense mechanisms, and feature encoding techniques.
 
 ## 2. Hybrid Quantum-Classical Approach
 Our implementation uses a hybrid approach where:
@@ -40,7 +40,7 @@ Our QNN implementation follows a modular architecture with these major component
 ## 5. Key Components
 
 ### 5.1 FeatureExtractor Class
-Purpose: Extracts intermediate features from the provided CNN model
+Purpose: Extracts intermediate features from  provided CNN model
 
 ```python
 # Example usage
@@ -52,7 +52,7 @@ features = feature_extractor.get_features()
 Key methods:
 - `__init__(model, layer_name)`: Initializes extractor with specified layer
 - `_register_hooks()`: Sets up hooks to capture intermediate features
-- `get_features()`: Returns extracted features from the last forward pass
+- `get_features()`: Returns extracted features from  last forward pass
 
 ### 5.2 Entanglement Layer
 Purpose: Applies different entanglement patterns to quantum qubits
@@ -71,7 +71,7 @@ Implemented patterns:
 - **No entanglement**: Qubits operate independently
 - **Linear entanglement**: Adjacent qubits are entangled (nearest-neighbor)
 - **Full entanglement**: All-to-all qubit entanglement
-- **Star entanglement**: Central qubit connected to all others
+- **Star entanglement**: Central qubit connected to all ors
 
 ### 5.3 DynamicWeightingModule
 Purpose: Adaptively balances classical and quantum components
@@ -85,7 +85,7 @@ alpha = weighting_module(classical_output, quantum_output)
 Key features:
 - Extracts statistical properties from both outputs
 - Calculates dynamic weighting based on features like mean, variance, skewness, correlation
-- Uses attention-like mechanism to focus on the most reliable component
+- Uses attention-like mechanism to focus on  most reliable component
 
 ### 5.4 Hybrid Forward Function
 Purpose: Core function implementing hybrid quantum-classical processing
