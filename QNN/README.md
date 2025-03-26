@@ -293,69 +293,16 @@ Our QNN implementation provides four primary noise models, accessible through th
 
 ### 12.2 Input Randomization (Optional)
 
+To provide more robustness against adversarial attacks, our implementation includes sample-specific noise variation.
+
 ### 12.3 Output Smoothing (Optional)
 
-
-
-
-#### 16.2.1 Trainable Noise Parameter
-
-The QNN uses a trainable noise parameter that is constrained to prevent trivial solutions:
-
-```python
-def constrained_noise_activation(raw_noise_param, min_val=0.01, max_val=0.5):
-    """
-    Apply a smoothed constraint to the noise parameter
-    """
-    range_size = max_val - min_val
-    return torch.sigmoid(raw_noise_param) * range_size + min_val
-```
-
-This allows the model to learn the optimal noise level during training.
-
-#### 16.2.2 Noise Application Logic
-
-Noise is applied at specific points in the quantum circuit:
-
-```python
-# Apply appropriate noise model if enabled
-# Only apply noise when not using backprop and when noise model is specified
-if not can_use_backprop and noise_param > 0.01 and noise_model is not None:
-    apply_noise_operations(range(num_qubits), noise_param, noise_model)
-```
-
-Noise is strategically applied between entanglement blocks to simulate realistic gate errors.
-
-### 16.3 Sample-Specific Noise Variation
-
-To provide more realistic noise simulation, the implementation includes sample-specific noise variation:
-
-```python
-# Apply sample-specific noise for robustness
-sample_noise = noise_val * (0.99 + 0.02 * np.random.random())
-```
-
-This simulates the noise variation observed in real quantum systems and can improve model robustness.
-
-### 16.4 Backpropagation Compatibility
-
-It's important to note that noise models are incompatible with backpropagation differentiation:
-
-```python
-if self.use_backprop:
-    if self.noise_model is not None:
-        print(f"Warning: {self.noise_model} noise model is not compatible with backprop. Disabling noise model.")
-        self.noise_model = None
-```
-
-This is because noise operations in PennyLane generally don't support analytic gradients required for backpropagation.
-
-### 16.5 Shots-Based Noise
+### 12.4 Shots-Based Noise
 
 In addition to explicit noise models, the QNN can introduce sampling noise by using shot-based measurements:
 
 ```python
-# Calculate number of shots based on noise strength
+# Calculate the number of shots based on noise strength
 # Higher noise strength = fewer shots (more sampling noise)
 if use_shots:
     num_shots = max(100, int(1000 * (1.0 - noise_strength)))
@@ -364,38 +311,3 @@ else:
 ```
 
 This simulates the statistical noise inherent in measurement-based quantum computing, with the number of shots inversely proportional to the desired noise level.
-
-
-### 16.7 Noise Model Comparison and Selection
-
-| Noise Model | Physical Process | Impact on Quantum States | Computational Overhead | When to Use |
-|-------------|------------------|--------------------------|------------------------|------------|
-| Depolarizing | Random errors | Uniform corruption | Medium | General testing, default choice |
-| Amplitude Damping | Energy dissipation | State decay toward |0⟩ | Medium | When modeling relaxation errors |
-| Phase Damping | Decoherence | Loss of superposition | Medium | When testing phase-sensitive algorithms |
-| Mixed | Combined effects | Comprehensive corruption | High | Most realistic simulation |
-| Shot-based | Measurement uncertainty | Statistical fluctuations | Low | Quick approximation of hardware behavior |
-
-## 17. Performance Benchmarking
-
-### 17.1 Speed Comparison
-
-The following benchmarks compare the processing speed of different configurations on a simulated dataset:
-
-| Configuration | Forward Pass Time (ms) | Backward Pass Time (ms) |
-|--------------|------------------------|-------------------------|
-| Standard CNN | 3.2 | 5.8 |
-| QNN (no noise, backprop) | 11.7 | 23.5 |
-| QNN (with noise, param-shift) | 28.4 | 47.2 |
-| QNN (with shots=1000) | 34.1 | 58.6 |
-
-*Note: Benchmark performed on simulated MNIST dataset with batch size=32, using NVIDIA RTX 3080.*
-
-### 17.2 Memory Usage
-
-| Configuration | GPU Memory (MB) | CPU Memory (MB) |
-|--------------|-----------------|-----------------|
-| Standard CNN | - | - |
-| QNN (10 qubits) | - | - |
-
-
