@@ -40,7 +40,7 @@ Our QNN implementation follows a modular architecture with these major component
 ## 5. Key Components
 
 ### 5.1 FeatureExtractor Class
-Purpose: Extracts intermediate features from any CNN model
+Purpose: Extracts intermediate features from the provided CNN model
 
 ```python
 # Example usage
@@ -84,7 +84,7 @@ alpha = weighting_module(classical_output, quantum_output)
 
 Key features:
 - Extracts statistical properties from both outputs
-- Calculates dynamic weighting based on features like mean, variance, skewness
+- Calculates dynamic weighting based on features like mean, variance, skewness, correlation
 - Uses attention-like mechanism to focus on the most reliable component
 
 ### 5.4 Hybrid Forward Function
