@@ -1,21 +1,5 @@
 # Quantum Neural Network (QNN) Implementation Documentation
 
-## Table of Contents
-1. [Introduction](#introduction)
-2. [Theoretical Background](#theoretical-background)
-3. [Installation and Requirements](#installation-and-requirements)
-4. [Implementation Architecture](#implementation-architecture)
-5. [Key Components](#key-components)
-6. [Step-by-Step Usage Guide](#step-by-step-usage-guide)
-7. [Parameters and Configuration](#parameters-and-configuration)
-8. [Entanglement Approaches](#entanglement-approaches)
-9. [Encoding Methods](#encoding-methods)
-10. [Quantum Noise Models](#quantum-noise-models)
-11. [Training Techniques](#training-techniques)
-12. [Performance Optimization](#performance-optimization)
-13. [Troubleshooting](#troubleshooting)
-14. [References](#references)
-
 ## 1. Introduction
 This documentation provides a comprehensive guide to the Quantum Neural Network (QNN) v3.1.0 implementation. This hybrid quantum-classical neural network framework combines traditional convolutional neural networks (CNNs) with quantum circuits to create advanced machine learning models that can leverage quantum computational advantages while maintaining classical deep learning strengths.
 
