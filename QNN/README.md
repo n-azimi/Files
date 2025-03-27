@@ -306,3 +306,39 @@ else:
 ```
 
 This simulates the statistical noise inherent in measurement-based quantum computing, with the number of shots inversely proportional to the desired noise level.
+
+
+## 13. Quantum Circuit Visualization Example
+```python
+    custom_settings = {
+        "output_dim": 10,
+        "circuit_depth": 2,
+        "encoding_method": 'enhanced_angle',
+        "entanglement_type": 'linear_entanglement_ansatz',
+        "noise_model": 'depolarizing',
+        "noise_strength": 0.05,
+        "use_backprop": True
+    }
+```
+
+```
+0: ──RX(rx_angle_0)──RY(ry_angle_0)──RZ(rz_angle_0)─╭●──RX(theta_0)──RZ(phi_0)────RX(rx_angle_0*0.5)
+1: ──RX(rx_angle_1)──RY(ry_angle_1)──RZ(rz_angle_1)─╰X─╭●────────────RX(theta_1)──RZ(phi_1)─────────
+2: ──RX(rx_angle_2)──RY(ry_angle_2)──RZ(rz_angle_2)────╰X───────────╭●────────────RX(theta_2)───────
+3: ──RX(rx_angle_3)──RY(ry_angle_3)──RZ(rz_angle_3)─────────────────╰X────────────RX(theta_3)───────
+
+───RY(ry_angle_0*0.5)──RZ(rz_angle_0*0.5)─────────────────────╭●───────────────────RX(theta_0)
+───RX(rx_angle_1*0.5)──RY(ry_angle_1*0.5)──RZ(rz_angle_1*0.5)─╰X──────────────────╭●──────────
+───RZ(phi_2)───────────RX(rx_angle_2*0.5)──RY(ry_angle_2*0.5)──RZ(rz_angle_2*0.5)─╰X──────────
+───RZ(phi_3)───────────RX(rx_angle_3*0.5)──RY(ry_angle_3*0.5)──RZ(rz_angle_3*0.5)─────────────
+
+───RZ(phi_0)────RX(rx_angle_0*0.5)──RY(ry_angle_0*0.5)──RZ(rz_angle_0*0.5)────────────────────
+───RX(theta_1)──RZ(phi_1)───────────RX(rx_angle_1*0.5)──RY(ry_angle_1*0.5)──RZ(rz_angle_1*0.5)
+──╭●────────────RX(theta_2)─────────RZ(phi_2)───────────RX(rx_angle_2*0.5)──RY(ry_angle_2*0.5)
+──╰X────────────RX(theta_3)─────────RZ(phi_3)───────────RX(rx_angle_3*0.5)──RY(ry_angle_3*0.5)
+
+──────────────────────┤ ╭Probs
+──────────────────────┤ ├Probs
+───RZ(rz_angle_2*0.5)─┤ ├Probs
+───RZ(rz_angle_3*0.5)─┤ ╰Probs
+```
