@@ -310,15 +310,15 @@ This simulates the statistical noise inherent in measurement-based quantum compu
 
 ## 13. Quantum Circuit Visualization Example
 ```python
-    custom_settings = {
-        "output_dim": 10,
-        "circuit_depth": 2,
-        "encoding_method": 'enhanced_angle',
-        "entanglement_type": 'linear_entanglement_ansatz',
-        "noise_model": 'depolarizing',
-        "noise_strength": 0.05,
-        "use_backprop": True
-    }
+custom_settings = {
+    "output_dim": 10,
+    "circuit_depth": 2,
+    "encoding_method": 'enhanced_angle',
+    "entanglement_type": 'linear_entanglement_ansatz',
+    "noise_model": 'depolarizing',
+    "noise_strength": 0.05,
+    "use_backprop": True
+}
 ```
 
 ```
