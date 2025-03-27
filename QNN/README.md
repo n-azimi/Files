@@ -19,6 +19,7 @@ TBC
 ## 4. Implementation Architecture
 Our QNN implementation follows a modular architecture with these major components:
 
+### 4.1 High-Level Architecture
 <img src="Architecture.jpg" width="1000" />
 
 ### 4.2 Data Flow
