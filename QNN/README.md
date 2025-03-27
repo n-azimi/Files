@@ -19,13 +19,7 @@ TBC
 ## 4. Implementation Architecture
 Our QNN implementation follows a modular architecture with these major components:
 
-### 4.1 High-Level Architecture
-```
-┌───────────────┐    ┌───────────────┐    ┌───────────────┐    ┌───────────────┐
-│  Classical    │    │   Feature     │    │    Quantum    │    │    Dynamic    │
-│  CNN Model    │───>│  Extraction   │───>│    Circuit    │───>│   Weighting   │───> Output
-└───────────────┘    └───────────────┘    └───────────────┘    └───────────────┘
-```
+<img src="Architecture.jpg" width="150" />
 
 ### 4.2 Data Flow
 1. **Input Processing**: Raw data is processed by a classical CNN
