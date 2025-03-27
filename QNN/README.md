@@ -19,7 +19,7 @@ TBC
 ## 4. Implementation Architecture
 Our QNN implementation follows a modular architecture with these major components:
 
-<img src="Architecture.jpg" width="150" />
+<img src="Architecture.jpg" width="650" />
 
 ### 4.2 Data Flow
 1. **Input Processing**: Raw data is processed by a classical CNN
